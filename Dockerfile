@@ -13,14 +13,13 @@ RUN \
   apt-get update && \
   apt-get install -y nginx && \
   rm -rf /var/lib/apt/lists/* && \
-  echo "\ndaemon off;" >> /etc/nginx/nginx.conf && \
   chown -R www-data:www-data /var/lib/nginx
 
 # Install our own nginx conf
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Define mountable directories.
-VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/certs", "/etc/nginx/conf.d", "/var/log/nginx", "/var/www/html"]
+VOLUME ["/var/log/nginx"]
 
 # Define working directory.
 WORKDIR /etc/nginx
