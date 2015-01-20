@@ -18,6 +18,9 @@ RUN \
 # Install our own nginx conf
 COPY nginx.conf /etc/nginx/nginx.conf
 
+# Remove the default nginx file
+RUN rm -f /etc/nginx/sites-enabled/default
+
 # Define mountable directories.
 VOLUME ["/var/log/nginx"]
 
